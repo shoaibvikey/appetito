@@ -27,8 +27,8 @@
     <circle cx="570" cy="316" r="9" fill="#fbfaf6" stroke-width="2.5"/>
   </g>
 
-  <text x="55" y="111" fill="#db6e4f" font-family="Georgia,serif" font-size="20" font-style="italic" font-weight="700" transform="rotate(-8 55 111)">A little more than</text>
-  <text x="59" y="137" fill="#db6e4f" font-family="Georgia,serif" font-size="20" font-style="italic" font-weight="700" transform="rotate(-8 59 137)">a meal out.</text>
+  <text x="55" y="111" fill="#db6e4f" font-family="Georgia,serif" font-size="20" font-style="italic" font-weight="400" transform="rotate(-8 55 111)">A little more than</text>
+  <text x="59" y="137" fill="#db6e4f" font-family="Georgia,serif" font-size="20" font-style="italic" font-weight="400" transform="rotate(-8 59 137)">a meal out.</text>
 
   <circle cx="601" cy="91" r="52" fill="#db6e4f"/>
   <text x="601" y="98" text-anchor="middle" fill="#fffaf6" font-family="Georgia,serif" font-size="18" font-style="italic" font-weight="700" transform="rotate(9 601 98)">CIAO!</text>
