@@ -25,6 +25,9 @@
 .menu-diet-filter button{min-height:27px;padding:5px 10px;border:0;border-radius:24px;background:transparent;color:#62645d;font-size:9px;font-weight:700;white-space:nowrap;cursor:pointer}
 .menu-diet-filter button[aria-pressed="true"]{background:var(--green);color:#fff}
 .menu-diet-filter button:focus-visible{outline:2px solid var(--tomato);outline-offset:2px}
+.menu-diet-filter button[data-diet-filter="nonveg"][aria-pressed="true"]{background:#c94b42;color:#fff}
+.menu-toolbar{border-block:0}
+.menu-legend{border-top:0}
 
 .eyebrow-noodles{display:block;flex:0 0 22px;width:22px;height:20px;overflow:visible}
 
