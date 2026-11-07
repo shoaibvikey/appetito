@@ -34,9 +34,11 @@
   <text x="601" y="98" text-anchor="middle" fill="#fffaf6" font-family="Georgia,serif" font-size="18" font-style="italic" font-weight="700" transform="rotate(9 601 98)">CIAO!</text>
 
   <circle cx="108" cy="459" r="58" fill="#e8eddc"/>
-  <path d="m83 467 20-23m-20 23 12 1m-12-1 1-12" stroke="#648441" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
-  <text x="124" y="450" fill="#496232" font-family="Arial,sans-serif" font-size="10" font-weight="700" letter-spacing="1.3" transform="rotate(-9 124 450)">PUMP</text>
-  <text x="126" y="465" fill="#496232" font-family="Arial,sans-serif" font-size="10" font-weight="700" letter-spacing="1.3" transform="rotate(-9 126 465)">TRACK</text>
+  <g transform="rotate(-8 108 459)">
+    <path d="M78 468 99 445m-1 12 1-12-12 1" stroke="#648441" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="112" y="454" fill="#496232" font-family="Arial,sans-serif" font-size="10" font-weight="700" letter-spacing="1.3">PUMP</text>
+    <text x="112" y="468" fill="#496232" font-family="Arial,sans-serif" font-size="10" font-weight="700" letter-spacing="1.3">TRACK</text>
+  </g>
 
   <circle cx="612" cy="457" r="58" fill="#f0e3c0"/>
   <path d="M582 461h18m-9-9v18m-6-15 12 12m0-12-12 12" stroke="#795f35" stroke-width="1.2" stroke-linecap="round"/>
