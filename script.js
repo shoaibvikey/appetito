@@ -53,28 +53,57 @@ priceLabels.forEach((price) => {
   price.replaceChildren(content);
 });
 const search = document.querySelector('#menu-search');
-if (search) {
-  const items = [...document.querySelectorAll('.menu-item')];
+const dietFilterButtons = [...document.querySelectorAll('[data-diet-filter]')];
+if (search || dietFilterButtons.length) {
+  const items = [...document.querySelectorAll('.menu-content .menu-item')];
   const sections = [...document.querySelectorAll('[data-menu-section]')];
+  const subsections = [...document.querySelectorAll('.menu-subsection')];
   const status = document.querySelector('.search-status');
-  const searchMenu = () => {
-    const query = search.value.trim().toLocaleLowerCase();
+  let activeDiet = 'all';
+
+  items.forEach((item) => {
+    const text = item.textContent.toLocaleLowerCase();
+    const hasNonVeg = /\b(chicken|egg|prawns?|shrimp|fish|lamb|mutton|beef|meat|salami|bacon|ham|seafood)\b/i.test(text);
+    const hasVeg = /\b(vegan|vegetarian|veg|paneer|tofu)\b/i.test(text);
+    item.dataset.diet = hasVeg && hasNonVeg ? 'both' : hasNonVeg ? 'nonveg' : 'veg';
+  });
+
+  const updateMenu = () => {
+    const query = search?.value.trim().toLocaleLowerCase() || '';
     let visible = 0;
     items.forEach((item) => {
-      const matches = !query || item.textContent.toLocaleLowerCase().includes(query);
-      item.hidden = !matches;
-      if (matches) visible++;
+      const matchesQuery = !query || item.textContent.toLocaleLowerCase().includes(query);
+      const matchesDiet = activeDiet === 'all' || item.dataset.diet === activeDiet || item.dataset.diet === 'both';
+      item.hidden = !(matchesQuery && matchesDiet);
+      if (!item.hidden) visible++;
+    });
+    subsections.forEach((subsection) => {
+      subsection.hidden = ![...subsection.querySelectorAll('.menu-item')].some((item) => !item.hidden);
     });
     sections.forEach((section) => {
       section.hidden = ![...section.querySelectorAll('.menu-item')].some((item) => !item.hidden);
     });
-    status.textContent = query ? `${visible} menu ${visible === 1 ? 'item' : 'items'} found for “${search.value.trim()}”.` : '';
+    if (status) {
+      if (!query && activeDiet === 'all') status.textContent = '';
+      else {
+        const filterName = activeDiet === 'veg' ? 'Veg' : activeDiet === 'nonveg' ? 'Non-Veg' : '';
+        const criteria = [filterName, query ? `matching “${search.value.trim()}”` : ''].filter(Boolean);
+        status.textContent = `${visible} menu ${visible === 1 ? 'item' : 'items'} shown${criteria.length ? ` (${criteria.join(' · ')})` : ''}.`;
+      }
+    }
   };
-  search.addEventListener('input', searchMenu);
+
+  dietFilterButtons.forEach((button) => button.addEventListener('click', () => {
+    activeDiet = button.dataset.dietFilter;
+    dietFilterButtons.forEach((option) => option.setAttribute('aria-pressed', String(option === button)));
+    updateMenu();
+  }));
+  if (search) search.addEventListener('input', updateMenu);
   document.addEventListener('keydown', (event) => {
     if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k') { event.preventDefault(); search.focus(); }
-    if (event.key === 'Escape' && document.activeElement === search) { search.value = ''; searchMenu(); search.blur(); }
+    if (event.key === 'Escape' && search && document.activeElement === search) { search.value = ''; updateMenu(); search.blur(); }
   });
+  updateMenu();
 }
 
 // Distinct, menu-specific SVG artwork for every dish and drink card.

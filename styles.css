@@ -21,6 +21,11 @@
 
 .mini-furniture{display:block;flex:0 0 28px;width:28px;height:26px;overflow:visible}
 
+.menu-diet-filter{display:flex;flex:0 0 auto;align-items:center;gap:3px;padding:3px;border:1px solid #d7d6cb;border-radius:30px;background:#fffdfa}
+.menu-diet-filter button{min-height:27px;padding:5px 10px;border:0;border-radius:24px;background:transparent;color:#62645d;font-size:9px;font-weight:700;white-space:nowrap;cursor:pointer}
+.menu-diet-filter button[aria-pressed="true"]{background:var(--green);color:#fff}
+.menu-diet-filter button:focus-visible{outline:2px solid var(--tomato);outline-offset:2px}
+
 .eyebrow-noodles{display:block;flex:0 0 22px;width:22px;height:20px;overflow:visible}
 
 /* Small, varied illustrations on every menu card */
